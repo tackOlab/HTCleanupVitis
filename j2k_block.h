@@ -1,9 +1,9 @@
 #pragma once
 #include <stdint.h>
 #include <string.h>
-//#include <functional>
+#include <functional>
 #include <memory>
-//#include <vector>
+#include <vector>
 
 // NONEED: #include "buf_chain.h"
 
@@ -75,7 +75,7 @@ class j2k_codeblock : public j2k_region {
   uint8_t fast_skip_passes;
   uint32_t Lblock;
   // length of a coding pass in byte
-  std::vector<uint32_t> pass_length;
+  std::vector<uint32_t> pass_length; //fff
   // index of the coding-pass from which layer starts
   std::unique_ptr<uint8_t[]> layer_start;
   // number of coding-passes included in a layer
@@ -115,8 +115,8 @@ class j2k_codeblock : public j2k_region {
     memset(block_states.get(), 0, (size.x + 2) * (size.y + 2));
     this->layer_start  = std::make_unique<uint8_t[]>(num_layers);
     this->layer_passes = std::make_unique<uint8_t[]>(num_layers);
-    this->pass_length.reserve(109);
-    this->pass_length = std::vector<uint32_t>(num_layers, 0);  // critical section
+    this->pass_length.reserve(109); ///fff
+    this->pass_length = std::vector<uint32_t>(num_layers, 0);  // critical section//fff
   }
 
   void modify_state(const std::function<void(uint8_t &, uint8_t)> &callback, uint8_t val, int16_t j1,
