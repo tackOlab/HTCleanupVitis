@@ -1,5 +1,12 @@
 {
     "files.associations": {
-        "random": "cpp"
+        "random": "cpp",
+        "*.tcc": "cpp",
+        "string": "cpp",
+        "array": "cpp",
+        "string_view": "cpp",
+        "ostream": "cpp",
+        "sstream": "cpp",
+        "tuple": "cpp"
     }
 }

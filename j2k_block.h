@@ -112,8 +112,8 @@ class j2k_codeblock : public j2k_region {
     memset(block_states.get(), 0, (size.x + 2) * (size.y + 2));      // kuramochi
     this->layer_start  = std::make_unique<uint8_t[]>(num_layers);    // kuramochi
     this->layer_passes = std::make_unique<uint8_t[]>(num_layers);    // kuramochi
-    this->pass_length.reserve(109);                                  /// fff
-    this->pass_length = std::vector<uint32_t>(num_layers, 0);        // critical section//fff
+    this->pass_length.reserve(109);                                  /// kuramochi
+    this->pass_length = std::vector<uint32_t>(num_layers, 0);        // critical section//kuramochi
   }
 
   void modify_state(const std::function<void(uint8_t &, uint8_t)> &callback, uint8_t val,
