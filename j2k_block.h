@@ -1,7 +1,7 @@
 #pragma once
 #include <stdint.h>
 #include <string.h>
-#include <functional>
+//#include <functional>
 //#include <memory>
 //#include <vector>
 
@@ -43,7 +43,7 @@ class j2k_region {
   void set_pos0(element_siz in) { pos0 = in; }
   // set bottom-right coordinate (exclusive)
   void set_pos1(element_siz in) { pos1 = in; }
-  j2k_region() = default;
+  j2k_region(){};
   j2k_region(element_siz p0, element_siz p1) : pos0(p0), pos1(p1) {}
 };
 /********************************************************************************
@@ -92,8 +92,8 @@ class j2k_codeblock : public j2k_region {
         index(idx),
         band(orientation),
         M_b(M_b),
-        compressed_data(nullptr),      // kuramochi
-        current_address(nullptr),      // kuramochi
+        compressed_data(NULL),         // kuramochi
+        current_address(NULL),         // kuramochi
         block_states(g_state_buffer),  // kuramochi
         // public
         R_b(R_b),
@@ -131,11 +131,11 @@ class j2k_codeblock : public j2k_region {
     return block_states[(j1 + 1) * (size.x + 2) + (j2 + 1)] & 1;
   }
   // DEBUG FUNCTION, SOON BE DELETED
-  uint8_t get_orientation() const { return band; }
-  uint8_t get_context_label_sig(const uint16_t &j1, const uint16_t &j2) const;
-  uint8_t get_signLUT_index(const uint16_t &j1, const uint16_t &j2) const;
+  // uint8_t get_orientation() const { return band; }
+  // uint8_t get_context_label_sig(const uint16_t &j1, const uint16_t &j2) const;
+  // uint8_t get_signLUT_index(const uint16_t &j1, const uint16_t &j2) const;
   uint8_t get_Mb() const { return this->M_b; }
-  uint8_t *get_compressed_data();
+  // uint8_t *get_compressed_data();
   // void set_compressed_data(uint8_t *buf, uint16_t bufsize) {
   //   if (this->compressed_data != nullptr) {  // kuramochi
   //     exit(EXIT_FAILURE);                    // kuramochi
